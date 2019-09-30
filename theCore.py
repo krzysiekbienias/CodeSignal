@@ -44,6 +44,7 @@ class IntroGates:
 class atTheCrossroads:
     def __init__(self):
         self.mbRpgNextLevel=self.reachNextLevel(experience=10,threshold=15,reward=5)
+        self.mintknapsackLight=self.knapsackLight(value1=10,weight1=5,value2=6,weight2=4,maxW=8)
 
 
     def reachNextLevel(self,experience, threshold, reward):
@@ -52,7 +53,7 @@ class atTheCrossroads:
         else:
             return False
 
-    def knapsackLight(self,value1, weight1, value2, weight2, maxW):
+    def knapsackLight(self,value1:int, weight1:int, value2:int, weight2:int, maxW:int)->int:
         if weight1 <= maxW and value1 >= value2:
             return value1
         elif weight2 <= maxW and value2 >= value1:
@@ -63,6 +64,14 @@ class atTheCrossroads:
     def isInfiniteProcess(self):
         pass
     def arithmeticExpression(self):
+        pass
+
+    def tenisSet(self):
+        pass
+    def willYou(self):
+        pass
+
+    def metroCard(self):
         pass
 
 

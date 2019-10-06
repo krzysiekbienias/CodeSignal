@@ -39,6 +39,7 @@ class atTheCrossroads:
     def __init__(self):
         self.mbRpgNextLevel = self.reachNextLevel(experience=10, threshold=15, reward=5)
         self.mintknapsackLight = self.knapsackLight(value1=15, weight1=2, value2=20, weight2=3, maxW=2)
+        self.mbIsInfinite=self.isInfiniteProcess(a=2,b=3)
 
     def reachNextLevel(self, experience, threshold, reward):
         if experience + reward >= threshold:
@@ -67,11 +68,21 @@ class atTheCrossroads:
         if (b == c):
             return a
 
-    def isInfiniteProcess(self):
-        pass
+    def isInfiniteProcess(self,a:int,b:int)->bool:#does not work
+        while a!=b:
+            a+=1
+            b-=1
+        if a==b:
+            return False
+        else:
+            return True
 
-    def arithmeticExpression(self):
-        pass
+    def arithmeticExpression(self,a:float,b:float,c:float)->bool:
+
+        if a+b==c or a-b==c or a*b==c or a/b==c:
+            return True
+        else:
+            return False
 
     def tenisSet(self):
         pass

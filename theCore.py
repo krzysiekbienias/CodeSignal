@@ -39,7 +39,8 @@ class atTheCrossroads:
     def __init__(self):
         self.mbRpgNextLevel = self.reachNextLevel(experience=10, threshold=15, reward=5)
         self.mintknapsackLight = self.knapsackLight(value1=15, weight1=2, value2=20, weight2=3, maxW=2)
-        self.mbIsInfinite=self.isInfiniteProcess(a=2,b=3)
+        #self.mbIsInfinite=self.isInfiniteProcess(a=2,b=3)#does not work
+        self.btenis=self.tenisSet(score1=7,score2=7)
 
     def reachNextLevel(self, experience, threshold, reward):
         if experience + reward >= threshold:
@@ -84,8 +85,14 @@ class atTheCrossroads:
         else:
             return False
 
-    def tenisSet(self):
-        pass
+    def tenisSet(self,score1, score2):#does not work hiden 17/20 test passed
+
+        if (score1==6 and score2<5) or (score2==6 and score1<5):
+            return True
+        elif ((score1==7  and score1-score2<=2) or (score1==5 and score2-score1<=2)) and (score1!=score2):
+            return True
+        else:
+            return False
 
     def willYou(self):
         pass
@@ -101,7 +108,30 @@ class CornerOf0sAnd1s:
 
 class LoopTunnel:
     def __init__(self):
+        self.miLeastFactorial=self.leastFactorial(n=17)
+
+    def leastFactorial(self,n):
         pass
+
+    def countSumOfTwoRepresentations2(self,n, l, r):
+        pass
+
+    def magicalWell(self,a, b, n):
+        pass
+
+    def lineUp(self,commands):
+        pass
+
+    def additionWithoutCarrying(self,param1, param2):
+        pass
+
+
+
+
+
+
+
+
 
 
 class ListForestEdge:

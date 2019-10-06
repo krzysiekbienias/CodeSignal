@@ -51,14 +51,21 @@ class atTheCrossroads:
             return value1 + value2
         elif min(weight2,weight1)>maxW:
             return 0
-        elif min(weight2,weight1)==maxW:
-            return max(value2,value1)
-        elif max(weight1,weight2)<=maxW:
+        elif weight1<=maxW and weight2>maxW:
+            return value1
+        elif weight2<=maxW and weight1>maxW:
+            return value2
+        elif weight1<=maxW and weight2<=maxW and weight1+weight2>maxW:
             return max(value1,value2)
 
 
-    def extraNumber(self):
-        pass
+    def extraNumber(self,a:int,b:int,c:int)->int:
+        if (a==b):
+            return c
+        if (a == c):
+            return b
+        if (b == c):
+            return a
 
     def isInfiniteProcess(self):
         pass

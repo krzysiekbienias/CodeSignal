@@ -130,6 +130,7 @@ class ListForestEdge:
         self.mlArray=self.createArray(size=5)
         self.mlReplaicement=self.arrayReplace(inputArray=[1,2,1],elemToReplace=1,substitutionElem=3)
         self.mlFirstReverse=self.firstReverseTry(arr=[1, 2, 3, 4, 5])
+        self.mlRemovePart=self.removeArrayPart(inputArray=[2, 3, 2, 3, 4, 5],l=2,r=4)
 
     def createArray(self,size):
             return [1] * size
@@ -140,9 +141,20 @@ class ListForestEdge:
                 inputArray[i]=substitutionElem
         return inputArray
 
-    def firstReverseTry(self,arr):
-        f=arr[0]
-        l=arr[-1]
+    def firstReverseTry(self,arr:List[int])->List[int]:
+        if len(arr)==0:
+            return []
+        else:
+            f=arr[0]
+            l=arr[-1]
+            arr[0]=l
+            arr[-1]=f
+            return arr
+
+    def removeArrayPart(self,inputArray:List[int], l:int, r:int)->List[int]:
+        left=inputArray[:l]
+        right=inputArray[r+1:]
+        return left+right
 
 
 

@@ -131,6 +131,8 @@ class ListForestEdge:
         self.mlReplaicement=self.arrayReplace(inputArray=[1,2,1],elemToReplace=1,substitutionElem=3)
         self.mlFirstReverse=self.firstReverseTry(arr=[1, 2, 3, 4, 5])
         self.mlRemovePart=self.removeArrayPart(inputArray=[2, 3, 2, 3, 4, 5],l=2,r=4)
+        self.mbMiddle=self.isSmooth(arr=[4,5,6,7,10])
+
 
     def createArray(self,size):
             return [1] * size
@@ -155,6 +157,19 @@ class ListForestEdge:
         left=inputArray[:l]
         right=inputArray[r+1:]
         return left+right
+
+    def isSmooth(self,arr):
+        l=len(arr)
+        if l%2==0:
+            rightMiddlIndex=len(arr)/2
+            leftMiddleIndex=rightMiddlIndex-1
+            middleIndex=(leftMiddleIndex+rightMiddlIndex)/2
+
+        else:
+            middleIndex = (0 + l - 1) // 2
+            return arr[middleIndex]
+
+
 
 
 

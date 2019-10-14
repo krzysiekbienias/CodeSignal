@@ -213,8 +213,9 @@ class LabyrinthOfNestedLoops:
 
 class BookMarket:
     def __init__(self):
-        self.msBrackets=self.encloseInBrackets()
-    def encloseInBrackets(self,inputString):
+        self.msBrackets=self.encloseInBrackets(inputString="lala")
+
+    def encloseInBrackets(self,inputString:str)->str:
 
         return "("+inputString+")"
 

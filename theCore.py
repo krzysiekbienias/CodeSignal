@@ -131,7 +131,8 @@ class ListForestEdge:
         self.mlReplaicement=self.arrayReplace(inputArray=[1,2,1],elemToReplace=1,substitutionElem=3)
         self.mlFirstReverse=self.firstReverseTry(arr=[1, 2, 3, 4, 5])
         self.mlRemovePart=self.removeArrayPart(inputArray=[2, 3, 2, 3, 4, 5],l=2,r=4)
-        self.mbMiddle=self.isSmooth(arr=[4,5,6,7,10])
+        self.mbMiddle=self.isSmooth(arr=[4,5,6,7,10,3])
+        self.mlReplaceMiddle=self.replaceMiddle(arr=[7, 2, 2, 5, 10, 7])
 
 
     def createArray(self,size):
@@ -161,18 +162,49 @@ class ListForestEdge:
     def isSmooth(self,arr):
         l=len(arr)
         if l%2==0:
-            rightMiddlIndex=len(arr)/2
+            rightMiddlIndex=len(arr)//2
             leftMiddleIndex=rightMiddlIndex-1
-            middleIndex=(leftMiddleIndex+rightMiddlIndex)/2
-
+            u=arr[rightMiddlIndex]+arr[leftMiddleIndex]
+            if(arr[0]==arr[l-1]==u):
+                return True
+            else:
+                return False
         else:
             middleIndex = (0 + l - 1) // 2
-            return arr[middleIndex]
+            u=arr[middleIndex]
+            if arr[0]==arr[l-1]==u:
+                return True
+            else:
+                return False
 
+    def replaceMiddle(self,arr):
+        l = len(arr)
+        if l % 2 == 0:
+            rightMiddlIndex = len(arr) // 2
+            leftMiddleIndex = rightMiddlIndex - 1
+            u = arr[rightMiddlIndex] + arr[leftMiddleIndex]
 
+            arr.pop(rightMiddlIndex)
+            arr.pop(leftMiddleIndex)
+            arr.insert(leftMiddleIndex, u)
+            return arr
 
+        else:
+            return arr
 
+    def makeArrayConsecutive2(self, statues:List[int])->int:
+        statues.sort()
+        missingStatues = []
+        for i in range(len(statues) - 1):
+            if statues[i + 1] - statues[i] > 1:
+                dif = statues[i + 1] - statues[i]
 
+                lGaps = list(range(1, dif))
+                for j in range(len(lGaps)):
+                    temp = statues[i] + lGaps[j]
+                    missingStatues.append(temp)
+                i += 1
+        return len(missingStatues)
 
 class LabyrinthOfNestedLoops:
     def __init__(self):
@@ -181,7 +213,11 @@ class LabyrinthOfNestedLoops:
 
 class BookMarket:
     def __init__(self):
-        pass
+        self.msBrackets=self.encloseInBrackets()
+    def encloseInBrackets(self,inputString):
+
+        return "("+inputString+")"
+
 
 
 class MirrorLake:

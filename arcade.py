@@ -62,7 +62,7 @@ class EdgeOfTheOcean:
         self.mintAdjaisentProd = self.adjacentElementsProduct(inputArray=[-23, 4, -3, 8, -12])
         # self.mintShapeArea=self.shapeArea(n=996) #maximum recursion depth exceeded in comparison
         self.mlStatues = self.makeArrayConsecutive2(statues=[6, 2, 3, 8])
-        self.mbAlmostIncreas = self.almostIncreasingSequence(sequence=[1, 2, 5, 3, 5])
+        #self.mbAlmostIncreas = self.almostIncreasingSequence(sequence=[1, 2, 5, 3, 5])
 
     ############################################----adjacentElementsProduct ----#########################################################
     def adjacentElementsProduct(self, inputArray):
@@ -84,7 +84,7 @@ class EdgeOfTheOcean:
 
     # for counter, value in enumerate(a):
 
-    def makeArrayConsecutive2(self, statues):
+    def makeArrayConsecutive2(self, statues):#does  not work
         statues.sort()
         missingStatues = []
         for i in range(len(statues) - 1):

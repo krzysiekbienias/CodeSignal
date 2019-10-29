@@ -7,6 +7,8 @@ class IntroGates:
     # 8 problems
     def __init__(self):
         self.mintTwoDigits = self.addTwoDigits(n=15)
+        self.mintMaxMultiple=self.maxMultiple(divisor=3,bound=10)
+        self.miLateRide=self.lateRide(n=1439)
 
     def addTwoDigits(self, n: int) -> int:
         a = n % 10
@@ -22,14 +24,27 @@ class IntroGates:
     def seatsInTheater(self) -> int:
         pass
 
-    def maxMultiple(self) -> int:
+    def maxMultiple(self, divisor, bound) -> int:#does not work
+        i = 1
+        while i <= bound:
+            N = i * divisor
+            if N % divisor == 0 and N <= bound:
+                i += 1
+            else:
+                return N
+
+    def circleOfNumbers(self) -> int: #i have seen the result but i don't understand
         pass
 
-    def circleOfNumbers(self) -> int:
-        pass
+    def lateRide(self,n) -> int:
+        entireHours=n//60
+        minutes=n-entireHours*60
+        a=entireHours//10
+        b=entireHours%10
+        c=minutes//10
+        d=minutes%10
+        return a+b+c+d
 
-    def lateRide(self) -> int:
-        pass
 
     def phoneCall(self) -> int:
         pass
@@ -127,57 +142,56 @@ class LoopTunnel:
 
 class ListForestEdge:
     def __init__(self):
-        self.mlArray=self.createArray(size=5)
-        self.mlReplaicement=self.arrayReplace(inputArray=[1,2,1],elemToReplace=1,substitutionElem=3)
-        self.mlFirstReverse=self.firstReverseTry(arr=[1, 2, 3, 4, 5])
-        self.mlRemovePart=self.removeArrayPart(inputArray=[2, 3, 2, 3, 4, 5],l=2,r=4)
-        self.mbMiddle=self.isSmooth(arr=[4,5,6,7,10,3])
-        self.mlReplaceMiddle=self.replaceMiddle(arr=[7, 2, 2, 5, 10, 7])
+        self.mlArray = self.createArray(size=5)
+        self.mlReplaicement = self.arrayReplace(inputArray=[1, 2, 1], elemToReplace=1, substitutionElem=3)
+        self.mlFirstReverse = self.firstReverseTry(arr=[1, 2, 3, 4, 5])
+        self.mlRemovePart = self.removeArrayPart(inputArray=[2, 3, 2, 3, 4, 5], l=2, r=4)
+        self.mbMiddle = self.isSmooth(arr=[4, 5, 6, 7, 10, 3])
+        self.mlReplaceMiddle = self.replaceMiddle(arr=[7, 2, 2, 5, 10, 7])
 
+    def createArray(self, size):
+        return [1] * size
 
-    def createArray(self,size):
-            return [1] * size
-
-    def arrayReplace(self,inputArray, elemToReplace, substitutionElem):
+    def arrayReplace(self, inputArray, elemToReplace, substitutionElem):
         for i in range(len(inputArray)):
-            if inputArray[i]==elemToReplace:
-                inputArray[i]=substitutionElem
+            if inputArray[i] == elemToReplace:
+                inputArray[i] = substitutionElem
         return inputArray
 
-    def firstReverseTry(self,arr:List[int])->List[int]:
-        if len(arr)==0:
+    def firstReverseTry(self, arr: List[int]) -> List[int]:
+        if len(arr) == 0:
             return []
         else:
-            f=arr[0]
-            l=arr[-1]
-            arr[0]=l
-            arr[-1]=f
+            f = arr[0]
+            l = arr[-1]
+            arr[0] = l
+            arr[-1] = f
             return arr
 
-    def removeArrayPart(self,inputArray:List[int], l:int, r:int)->List[int]:
-        left=inputArray[:l]
-        right=inputArray[r+1:]
-        return left+right
+    def removeArrayPart(self, inputArray: List[int], l: int, r: int) -> List[int]:
+        left = inputArray[:l]
+        right = inputArray[r + 1:]
+        return left + right
 
-    def isSmooth(self,arr):
-        l=len(arr)
-        if l%2==0:
-            rightMiddlIndex=len(arr)//2
-            leftMiddleIndex=rightMiddlIndex-1
-            u=arr[rightMiddlIndex]+arr[leftMiddleIndex]
-            if(arr[0]==arr[l-1]==u):
+    def isSmooth(self, arr):
+        l = len(arr)
+        if l % 2 == 0:
+            rightMiddlIndex = len(arr) // 2
+            leftMiddleIndex = rightMiddlIndex - 1
+            u = arr[rightMiddlIndex] + arr[leftMiddleIndex]
+            if (arr[0] == arr[l - 1] == u):
                 return True
             else:
                 return False
         else:
             middleIndex = (0 + l - 1) // 2
-            u=arr[middleIndex]
-            if arr[0]==arr[l-1]==u:
+            u = arr[middleIndex]
+            if arr[0] == arr[l - 1] == u:
                 return True
             else:
                 return False
 
-    def replaceMiddle(self,arr):
+    def replaceMiddle(self, arr):
         l = len(arr)
         if l % 2 == 0:
             rightMiddlIndex = len(arr) // 2
@@ -192,7 +206,7 @@ class ListForestEdge:
         else:
             return arr
 
-    def makeArrayConsecutive2(self, statues:List[int])->int:
+    def makeArrayConsecutive2(self, statues: List[int]) -> int:
         statues.sort()
         missingStatues = []
         for i in range(len(statues) - 1):
@@ -206,6 +220,7 @@ class ListForestEdge:
                 i += 1
         return len(missingStatues)
 
+
 class LabyrinthOfNestedLoops:
     def __init__(self):
         pass
@@ -213,12 +228,25 @@ class LabyrinthOfNestedLoops:
 
 class BookMarket:
     def __init__(self):
-        self.msBrackets=self.encloseInBrackets(inputString="lala")
+        self.msBrackets = self.encloseInBrackets(inputString="lala")
+        self.msNoun = self.properNounCorrection(noun='mercedes')
+        self.mbTandem = self.isTandemRepeat(inputString='tandemtandem')
 
-    def encloseInBrackets(self,inputString:str)->str:
+    def encloseInBrackets(self, inputString: str) -> str:
+        return "(" + inputString + ")"
 
-        return "("+inputString+")"
+    def properNounCorrection(self, noun: str) -> str:
+        firstLetter = noun[0].upper()
+        theRest = noun[1:].lower()
+        return firstLetter + theRest
 
+    def isTandemRepeat(self,
+                       inputString):  # nope check len of the first half of the string is equal to the second half of the string.
+        d1 = {}
+        for ch in inputString:
+            d1[ch] = d1.get(ch, 0) + 1
+
+        return d1
 
 
 class MirrorLake:

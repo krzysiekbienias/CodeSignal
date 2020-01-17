@@ -46,8 +46,24 @@ class IntroGates:
         return a+b+c+d
 
 
-    def phoneCall(self) -> int:
-        pass
+    def phoneCall(self,min1, min2_10, min11, s) -> int:#duration of the longest call
+        centsLeftAfter1Taryf=s-min1
+        if centsLeftAfter1Taryf<0:
+            return 0# there is not enough money for 1 min
+
+        minutesBetween1and10=1
+        if minutesBetween1and10*min2_10>centsLeftAfter1Taryf:
+            minutesBetween1and10+=1
+        centsLeftAfter2Taryf=centsLeftAfter1Taryf-min2_10
+        if centsLeftAfter1Taryf<0:
+                return minutesBetween1and10
+        minutesMoreThan10=1
+        if minutesMoreThan10 * min11>centsLeftAfter2Taryf:
+            minutesMoreThan10+=1
+        centsLeftAfter3Taryf=centsLeftAfter2Taryf-min11
+        if centsLeftAfter3Taryf<0:
+            return minutesMoreThan10
+
 
 
 class atTheCrossroads:
@@ -123,12 +139,27 @@ class CornerOf0sAnd1s:
 class LoopTunnel:
     def __init__(self):
         self.miLeastFactorial = self.leastFactorial(n=17)
+        self.miRepresentationSum=self.countSumOfTwoRepresentations2(n=6,l=2,r=4)
+
+
+
 
     def leastFactorial(self, n):
         pass
 
     def countSumOfTwoRepresentations2(self, n, l, r):
-        pass
+        counter=0
+        a=0
+        b=0
+        while a>=l and b<=r:
+
+            if n==a+b:
+                counter+=1
+        if n<a+b
+        a += 1
+        b += 1
+        return counter
+
 
     def magicalWell(self, a, b, n):
         pass

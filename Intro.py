@@ -30,15 +30,17 @@ class RainbowOfClarity:
 
 class RainsOfReason:
     def __init__(self):
-        self.mb_variableName=self.variableName(name='var_1__Int')
+        self.mb_variableName=self.variableName(name='2w2')
 
-    def variableName(self,name):
+    def variableName(self,name):#two hidden test failed but reveals it costs 10000
         candidate = True
         cond1 = list(range(ord('a'), ord('z')))
         cond2 = list(range(ord('A'), ord('Z')))
         cond3 = [95]
-        for i in range(len(name)):
-            if ord(name[i]) in cond1 + cond2 + cond3:
+        if bool(name[0].isdigit())==True or name[0]==' ':
+            return False
+        for i in range(1,len(name)):
+            if ord(name[i]) in cond1 + cond2 + cond3 or name[i].isdigit()==True:
 
                 candidate = True
             else:

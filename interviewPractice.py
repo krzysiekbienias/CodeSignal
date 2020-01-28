@@ -2,13 +2,16 @@ from typing import List
 import numpy as np
 from collections import Counter
 from itertools import product
+from functools import reduce
 
 
 class CommonTechniquesBasic:
     def __init__(self):
         self.mb_containsDuplicates = self.containsDuplicates(a=[1, 2, 3, 1])
         self.mb_sumOfTwo = self.sumOfTwo([1, 2, 3], b=[10, 20, 30, 40], v=42)
-        self.sumInRange(nums=[3, 0, -2, 6, -3, 2], queries=[[0, 2], [2, 5], [0, 5]])
+
+        self.mi_sumInRange=self.sumInRange(nums=[3, 0, -2, 6, -3, 2], queries=[[0, 2], [2, 5], [0, 5]])
+        self.mi_productExceptSelf=self.productExceptSelf(nums=[1, 2, 3, 4],m=2)
 
     def containsDuplicates(self, a):
         if (len(a) < 2):
@@ -39,6 +42,21 @@ class CommonTechniquesBasic:
             temp = sum(sublist)
             sums.append(temp)
         return sum(sums) % (10 ** 9 + 7)
+
+    def productExceptSelf(self, nums, m):
+        tempWithouti=[]
+        f_i = lambda x, y: x * y
+        for i in range(len(nums)):
+            removed=nums.pop(i)
+            red = reduce(f_i,nums)
+            tempWithouti.append(red)
+            nums.insert(i,removed)
+        return tempWithouti
+
+
+
+
+
 
 
 class NumberTheory:
@@ -104,10 +122,38 @@ class Counting:
         return res
 
 
+class Strings:
+    def __init__(self):
+        self.ms_amendTheSentence = self.amendTheSentence(s='CodesignalIsAwesome')
+        self.ms_strstr=self.strstr(s='CodefightsIsAwesome',x='IsA')
+        self.ms_classifyStrings=self.classifyStrings(s='auy')
+
+    def amendTheSentence(self, s):
+        corrected = ''
+        for i in range(len(s)):
+            if ord(s[i]) in range(65, 91) and i == 0:
+                x = s[i].lower()
+            elif ord(s[i]) in range(65, 91) and i >= 1:
+                x = ' ' + s[i].lower()
+            else:
+                x = s[i]
+            corrected = corrected + x
+        return corrected
+
+    def strstr(self,s,x): #hard task
+        pass
+
+    def classifyStrings(self,s):
+        pass
+
+class HeapsStackQues:
+    pass
+
 if __name__ == "__main__":
     coomtechb = CommonTechniquesBasic()
     numTheo = NumberTheory()
     sortTech = Sorting()
     counti = Counting()
+    strings = Strings()
 
     print('TheEnd')

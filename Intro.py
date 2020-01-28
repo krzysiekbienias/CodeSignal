@@ -68,11 +68,25 @@ class DivingDeeper:
 class EruptionOfLight:
 
     def __init__(self):
-        self.mb_beautifulString=self.isBeautifulString(inputString='bbbaacdafe')
+        self.mb_beautifulString=self.isBeautifulString(inputString='bbc')
 
         
     def isBeautifulString(self, inputString):
-        inputString.sort()
+        isBeautiful=True
+        ls_input=list(inputString)
+        ls_input.sort()
+
+        dic={}
+        for ch in ls_input:
+            dic[ch]=dic.get(ch,0)+1
+        for k in range(len(ls_input)-1):
+            if dic[ls_input[k]]<=dic[ls_input[k+1]]:
+                isBeautiful= False
+        return isBeautiful
+
+
+
+
 
 
 
